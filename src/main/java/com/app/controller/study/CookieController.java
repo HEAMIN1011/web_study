@@ -1,4 +1,4 @@
-package com.app.controller;
+package com.app.controller.study;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.app.util.MyCookieUtil;
 
@@ -103,4 +104,51 @@ public class CookieController {
 
 		return "cookie/read-cookie";
 	}
+	
+	@GetMapping("/id-cookie")
+	public String idCookie(HttpServletRequest request) {
+		String remember = MyCookieUtil.getCookie(request, "remember");
+		
+		if(remember != null) {
+			request.setAttribute("remember", remember);
+		}
+		return "cookie/id-cookie";
+	}
+	
+	@PostMapping("/id-cookie")
+	public String idCookieAction(HttpServletRequest request, HttpServletResponse response) {
+		
+		System.out.println(request.getParameter("id"));
+		System.out.println(request.getParameter("pw"));
+		System.out.println(request.getParameter("remember"));
+		
+		String remember = request.getParameter("remember");
+		String id = request.getParameter("id");
+		
+		//id pw 비교 <----> DB 저장된 데이터
+		// > 로그인 성공 -> my page / main page / page
+		//return "redirect:/read-cookie2";
+		
+		//아이디 기억체크 -> 쿠키에 저장 해두자
+		if(remember != null) {
+			boolean isRemember = Boolean.parseBoolean(remember);
+			if(remember.equals("true")) {
+				
+				Cookie ck = MyCookieUtil.createCookie("remember", id);
+				response.addCookie(ck);
+			}
+		else {
+			MyCookieUtil.createCookie("remember", "value");
+			ck.setMaxAge(0);
+			response.addCookie(ck);
+		}
+		}
+		
+		
+		// > 로그인 실패
+		//- > 다시 로그인 하는 화면
+		
+		return "cookie/id-cookie";
+	}
 }
+
