@@ -125,30 +125,28 @@ public class CookieController {
 		String remember = request.getParameter("remember");
 		String id = request.getParameter("id");
 		
-		//id pw 비교 <----> DB 저장된 데이터
-		// > 로그인 성공 -> my page / main page / page
-		//return "redirect:/read-cookie2";
+		// id pw 비교 <----> DB 저장된 데이터
+		// > 로그인 성공  -> 마이페이지/메인페이지/기존페이지 이동
+		// return "redirect:/read-cookie2";
 		
-		//아이디 기억체크 -> 쿠키에 저장 해두자
+		//아이디 기억 체크 -> 쿠키에 저장 해두자~
 		if(remember != null) {
 			boolean isRemember = Boolean.parseBoolean(remember);
 			if(remember.equals("true")) {
-				
 				Cookie ck = MyCookieUtil.createCookie("remember", id);
 				response.addCookie(ck);
 			}
-		else {
-			MyCookieUtil.createCookie("remember", "value");
+		} else {
+			Cookie ck = MyCookieUtil.createCookie("remember", "value");
 			ck.setMaxAge(0);
 			response.addCookie(ck);
 		}
-		}
 		
+		return "redirect:/read-cookie2";
 		
 		// > 로그인 실패
-		//- > 다시 로그인 하는 화면
+		//  -> 다시 로그인하는 화면 
 		
-		return "cookie/id-cookie";
+		//return "cookie/id-cookie";
 	}
 }
-
