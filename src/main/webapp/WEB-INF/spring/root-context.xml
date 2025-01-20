@@ -9,18 +9,17 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<!-- RoomDAO roomDAO = new RoomDAOImpl(); -->
 	<!-- <bean id="roomDAO" class="com.app.dao.room.impl.RoomDAOImpl"></bean> -->
 
-	<!-- roomService에 roomDAO 주입 -->
-	<!-- <bean id="roomService" class="coom.app.service.room.impl.roomServiceImpl"> -->
-
-	<!--RoomService roomService = new RoomServiceImpl(roomDAO); -->
+	<!-- roomService 에 roomDAO 주입 -->
+	<!-- <bean id="roomService" class="com.app.service.room.impl.RoomServiceImpl"> -->
+	<!-- RoomService roomService = new RoomServiceImpl(roomDAO); -->
 	<!-- 생성자를 통한 의존성 주입 -->
 	<!-- <constructor-arg ref="roomDAO"></constructor-arg> -->
-
 	<!-- set 을 통해 의존성 주입 -->
 	<!-- <property name="roomDAO" ref="roomDAO"></property> -->
+	<!-- </bean> -->
 
-	<bean class="org.apache.commons.dbcp2.BasicDataSource"
-		id="data_source">
+
+	<bean class="org.apache.commons.dbcp2.BasicDataSource" id="data_source">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl" />
 		<property name="username" value="scott" />
@@ -28,9 +27,12 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 	</bean>
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<property name="dataSource" ref="data_source"></property>
-		<property name="mapperLocations" value="/WEB-INF/mybatis/mapper/*.xml"></property>
+		<property name="mapperLocations" value="/WEB-INF/mybatis/mapper/**/*_mapper.xml"></property>
+		<property name="configLocation" value="/WEB-INF/mybatis/mybatis-config.xml"></property>
 	</bean>
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+
+
 </beans>
