@@ -12,5 +12,8 @@
 									#{viewType} )
 	</insert>
 	
-	
+	<select id="findRoomList" resultType="Room">
+		select * 
+		from T_ROOM
+	</select>
 </mapper>
