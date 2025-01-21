@@ -11,3 +11,10 @@ create sequence SEQ_T_ROOM_PK
 start with 1
 increment by 1
 nocycle;
+
+create Table T_USER(
+    id VARCHAR2(32) Primary key,
+    pw VARCHAR2(32),
+    name VARCHAR2(32) NOT NULL,
+    user_type VARCHAR(8) NOT NULL
+);
