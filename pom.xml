@@ -32,16 +32,13 @@
 			<scope>provided</scope>
 		</dependency>
 
-
-		<!--
-https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+		<!--https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
 			<version>2.3.3</version>
 			<scope>provided</scope>
 		</dependency>
-
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 		<dependency>
@@ -50,9 +47,7 @@ https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
 			<version>1.2</version>
 		</dependency>
 
-
-		<!--
-https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+		<!--https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -97,7 +92,6 @@ https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 			<artifactId>ojdbc10</artifactId>
 			<version>19.21.0.0</version>
 		</dependency>
-
 
 	</dependencies>
 </project>

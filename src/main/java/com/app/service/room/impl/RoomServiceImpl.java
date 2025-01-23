@@ -47,7 +47,7 @@ public class RoomServiceImpl implements RoomService {
 		
 		return result;
 	}
-	
+
 	@Override
 	public Room findRoomByRoomId(int roomId) {
 		
@@ -55,7 +55,7 @@ public class RoomServiceImpl implements RoomService {
 		
 		return room;
 	}
-	
+
 	@Override
 	public int removeRoom(int roomId) {
 		
@@ -63,6 +63,14 @@ public class RoomServiceImpl implements RoomService {
 		
 		return result;
 	}
-	
+
+	@Override
+	public int modifyRoom(Room room) {
+		
+		int result = roomDAO.modifyRoom(room);
+		
+		return result;
+	}
 
 }
+
