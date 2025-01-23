@@ -21,7 +21,7 @@
 
 		<h4>뷰타입</h4>
 		<select name="viewType" >
-			<option value="OCN" <c:if test="${room.viewType == 'OCN'}">selected</c:if>   >오션뷰</option>
+			<option value="OCN" <c:if test="${room.viewType == 'OCN'}">selected</c:if>>오션뷰</option>
 			<option value="CTY" <c:if test="${room.viewType == 'CTY'}">selected</c:if>>시티뷰</option>
 			<option value="MOT" <c:if test="${room.viewType == 'MOT'}">selected</c:if>>마운틴뷰</option>
 		</select> <br>

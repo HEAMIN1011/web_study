@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.dao.room.RoomDAO;
 import com.app.dto.room.Room;
+import com.app.dto.user.User;
 
 //Data 읽어오는 역할 DB접근역할   DAO, Repository
 // APIServiceRepository
@@ -60,6 +61,13 @@ public class RoomDAOImpl implements RoomDAO {
 		
 		return result;
 	}
-
+	
+	@Override
+	public int modifyUser(User user) {
+		
+		int result = sqlSessionTemplate.update("room_mapper.modifyUser", user);
+		
+		return result;
+	}
 }
 
