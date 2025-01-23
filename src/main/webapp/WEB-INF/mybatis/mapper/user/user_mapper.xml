@@ -25,8 +25,28 @@
 	</insert>
 	
 	<select id="findUserList" resultType="User">
-	select * from T_USER
+		select * from T_USER
 	</select>
+	
+	
+	<select id="findUserById" resultType="User" parameterType="String">
+		select *
+		FROM T_USER
+		WHERE id = #{id}	
+	</select>
+	
+	<select id="checkUserLogin" resultType="User" parameterType="User">
+		select *
+		from T_USER
+		where id = #{id} AND pw = #{pw} AND user_type = #{userType}
+	</select>
+	
 	
 
 </mapper>
+
+
+
+
+
+
